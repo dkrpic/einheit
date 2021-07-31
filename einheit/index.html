@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+<div class="main">
+
+   <div class="figure kreis"></div>
+   <div class="figure quadrat"></div>
+
+   <div class="content">
+    <form id="form">
+    
+  <div class="formc">
+    <h1>Login</h1>
+    
+
+    <label for="name"><b>Benutzername</b></label>
+    <input type="text" placeholder="Benutzername eingeben" name="name" id="name" required>
+    <span id="wrongname"></span>
+
+    <label for="psw"><b>Passwort</b></label>
+    <input type="password" placeholder="Passwort eingeben" name="psw" id="psw" required>
+    <span id="wrongpass"></span>
+
+ 
+ 
+
+    <button type="submit" class="registerbtn">Einloggen</button>
+  </div>
+  
+ 
+ 
+        
+        
+        
+    </form>   
+   </div>
+    
+    
+</div>
+    
+    
+    
+ <script>
+const users = [{ name: 'Abel',passwort: 'Abel', von:'00:00', bis:'07:00' },
+              { name: 'Bebel',passwort: 'Bebel', von:'07:01', bis:'18:00' },   
+              { name: 'Cebel',passwort: 'Cebel', von:'18:01', bis:'23:59' }];  
+     
+     
+const benutzer = document.getElementById("name");
+const tpsw = document.getElementById("psw");     
+const tform = document.getElementById("form");
+const wrongname = document.getElementById("wrongname");
+const wrongpass = document.getElementById("wrongpass");     
+     
+tform.onsubmit = event =>{
+  
+    event.preventDefault();
+    if(tpsw.value == "admin" && benutzer.value == "admin")
+           location.replace("links.html");
+        
+    const zeit = totalZeit();
+    console.log(zeit);
+    const filteredUser = users.filter((user)=>{
+        return user.name == benutzer.value;
+    });
+   console.log(filteredUser[0]);
+  const username = filteredUser.map((user)=>{
+      return user.name;
+  })
+  
+  const passwort = filteredUser.map((passwort)=>{
+      return passwort.passwort;
+  })
+  if(username.length == 0)
+      {
+          wrongname.innerText = "Benutzer noch nicht vorhanden";
+          
+      }
+    else if(passwort[0] != tpsw.value){
+          wrongpass.innerText = "Falsches Passwort";
+    }
+    else {
+        const von = filteredUser[0].von;
+        const bis = filteredUser[0].bis;
+        if((von<zeit) && (zeit<bis))
+         location.replace("links.html");
+        else(wrongpass.innerHTML = "Falsche Zeit");
+    }
+    
+}
+
+
+
+
+  benutzer.onfocus = () =>{
+      wrongpass.innerText ="";
+      wrongname.innerText = "";
+  }  
+   tpsw.onfocus = () =>{
+      wrongpass.innerText ="";
+      wrongname.innerText = "";
+  }  
+    
+    function totalZeit(){
+        const zeit = new Date();
+    let stunde = zeit.getHours();
+    if(stunde<10) stunde='0'+stunde;
+    let min = zeit.getMinutes();
+    if(min<10) min = '0' + min;
+    total = stunde+":"+min;
+        return total;
+    }
+    
+    </script>   
+</body>
+</html>

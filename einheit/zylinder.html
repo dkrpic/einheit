@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+<style>
+    .container{
+        display:grid;
+        grid-template-columns: 2fr 1fr;
+        grid-gap: 10px;
+        padding:10px;
+    }
+    .left,.right{
+       
+    }
+    table{
+        width: 100%;
+    }
+    tr{ 
+        
+        width: 100%;
+        color:white;
+        font-size: 19px;
+        display:flex;
+        justify-content:center;
+        align-items: baseline;
+    }
+    tr td:first-child{
+        flex:4;
+        padding:0px 2px 10px 2px;
+        text-align: right;
+       
+    }
+    tr td:nth-child(2){
+        flex:3;
+        
+    }
+    tr td:nth-child(3){
+        padding:2px 0px 10px 5px;
+        flex:1;
+    }
+    tr input[type=text]{
+        width: 100%;
+        margin:0px;
+        padding: 10px;
+        margin:12px 3px;
+    
+    }
+    .right{
+        background-color: rgba(255,255,255,0.6);
+        padding:20px;
+    }
+    .right img{
+        width: 80%;
+        display:block;
+        margin: auto;
+    }
+    select{
+        padding:9px 4px 10px 4px;
+        border: none;
+        outline: none;
+        background-color: rgba(255,255,255,0.93);
+    }
+    
+    
+    
+    </style>
+</head>
+
+<body>
+<div class="main">
+
+   <div class="figure kreis"></div>
+   <div class="figure quadrat"></div>
+
+   <div class="content">
+   <h1>Zylinder</h1>
+   <div class="container">
+       <div class="left">
+       <table>
+     <tr>
+      <td >Dmr. d(2*r1):</td>
+      <td ><input type="text" name="durch1" id="durch1"></td>
+      <td><select name="laenge" >
+                    <option value="mm">mm</option>
+                            <option value="cm">cm</option>
+                            <option value="dm">dm</option>
+                            <option value="m">m</option>
+                             </select></td>
+    </tr>
+ 
+    <tr>
+      <td >H&ouml;he h</td>
+      <td ><input type="text" name="hoehe" id="hoehe"></td>
+      <td><select name="laenge" >
+                    <option value="mm">mm</option>
+                            <option value="cm">cm</option>
+                            <option value="dm">dm</option>
+                            <option value="m">m</option>
+                             </select></td>
+    </tr>
+    <tr>
+      <td >Volumen V:</td>
+      <td >
+      <input type="text" name="vol" id="vol"></td>
+      <td><select value="valuevo" name="laenge" >
+                    <option value="mm">mm<sup>3</sup></option>
+                            <option value="cm">cm<sup>3</sup></option>
+                            <option value="dm">dm<sup>3</sup></option>
+                            <option value="m">m<sup>3</sup></option>
+                             </select></td>
+    </tr>
+    <tr>
+      <td>Oberfl&auml;che A<sub>0:</sub></td>
+      <td >
+      <input type="text" name="ober" id="ober"></td>
+      <td><select name="laenge" >
+                    <option id="valueober" value="mm">mm<sup>3</sup></option>
+                            <option value="cm">cm<sup>3</sup></option>
+                            <option value="dm">dm<sup>3</sup></option>
+                            <option value="m">m<sup>3</sup></option>
+                             </select></td>
+    </tr>
+   </table>
+      </div>
+       <div class="right">
+      <img src="bilder/cylinder.png" alt="kugel">
+
+       </div>
+   </div>
+ <button onclick="location.href ='links.html'"  class="registerbtn" >Links</button>
+    </div>
+    
+</div>
+ <script>
+   const volumen = document.getElementById("vol");
+   const ober = document.getElementById("ober");
+   const durch1 = document.getElementById("durch1");
+ 
+   const hoehe =  document.getElementById("hoehe");  
+const einheit = document.getElementsByTagName("select");
+     for(let s=0;s<einheit.length;s++){
+         console.log(einheit[s]);
+        einheit[s].addEventListener('change',onIn);
+     }
+   durch1.addEventListener('input',onIn);
+      hoehe.addEventListener('input',onIn);
+       function onIn(){
+   console.log("hallo");
+    if(isNaN(durch1.value)||isNaN(hoehe.value)) 
+      {
+           
+      ober.value = "NaN";
+      volumen.value="NaN";}
+       else{
+           console.log(toMm(durch1),toMm(hoehe));
+    volumen.value = Math.PI/4*toMm(durch1)* toMm(durch1)*toMm(hoehe)*toVol(volumen);
+    ober.value =  Math.PI/2*toMm(durch1)*(toMm(hoehe)+toMm(durch1)/2)*toOber(ober);       
+             
+   } }
+    function toMm(element){
+        
+    const laenge = element.parentElement.nextElementSibling.firstElementChild;
+        
+        switch(laenge.value) {
+  case 'mm':
+    return element.value;
+    break;
+  case 'cm':
+    return element.value*10
+    break;
+  case 'dm':
+    return element.value*100
+    break;
+                case 'm':
+    return element.value*1000
+    break;
+        }
+}
+     function toVol(element){
+         const ob = element.parentElement.nextElementSibling.firstElementChild;
+        console.log(ob.value);
+        switch(ob.value) {
+  case 'mm':
+    return 1;
+    break;
+  case 'cm':
+    return 1/1000;
+    break;
+  case 'dm':
+    return 1/1000000;
+    break;
+                case 'm':
+    return 1/1000000000;
+    break;
+        }
+     }
+        function toOber(element){
+         const ob = element.parentElement.nextElementSibling.firstElementChild;
+        console.log(ob.value);
+        switch(ob.value) {
+  case 'mm':
+    return 1;
+    break;
+  case 'cm':
+    return 1/100;
+    break;
+  case 'dm':
+    return 1/10000;
+    break;
+                case 'm':
+    return 1/1000000;
+    break;
+        }
+     }  
+    
+    </script> 
+</body>
+</html>

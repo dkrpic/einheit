@@ -1,0 +1,211 @@
+  *{
+        margin:0px;
+        padding:0px;
+        box-sizing: border-box;
+    }
+    .main{
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        background:linear-gradient(to right bottom,rgba(40,174,222),rgba(2,70,142));
+        display:flex;
+        justify-content: center;
+        align-items: center;
+      
+        overflow: hidden;
+        
+      
+        
+    }
+    .content{
+        width: 60%;
+        height: 80%;
+        backdrop-filter:blur(4px);
+        background:rgba(255,255,255,0.24);
+        z-index: 3;
+    }
+    .figure{
+        width:12rem;
+        height: 12rem;
+        background:linear-gradient(to right,rgba(255,255,255,0.2),rgba(255,255,255,0.4));
+        position: absolute; 
+       }
+    .kreis{
+     border-radius:50%;
+     bottom:4%;
+     left:7%;
+     animation: keka 152s infinite;    
+       
+    }
+    .quadrat{
+     top:5%;
+     left:60%;
+     transform:rotate(20deg);
+     animation: seka 112s infinite;
+      
+        
+    }
+    @keyframes seka{
+        0%{
+     top:5%;
+     left:60%;
+     transform:rotate(20deg);
+        }
+        10%{
+     top:15%;
+     left:79%;
+          transform:rotate(20deg);
+        }
+            20%{
+     top:25%;
+     left:87%;
+         transform:rotate(20deg);
+        }
+               40%{
+     top:45%;
+     left:56%;
+          transform:rotate(110deg);
+        }
+        70%{
+     top:35%;
+     left:27%;
+              transform:rotate(80deg);
+        }
+        100%{
+     top:5%;
+     left:60%;
+     transform:rotate(20deg);
+        }
+    }
+    @keyframes keka{
+         0%{
+     bottom:4%;
+     left:7%;
+        }
+        50%{
+     bottom:74%;
+     left:0%;  
+        }
+    }
+       
+   .formc {
+    padding:16px;
+    color:white;
+    }
+    
+    .formc h1{
+    margin:20px 0;
+    text-align: center;
+    }
+    ::placeholder{
+     color:rgba(40,80,111,0.5);
+    } 
+    label{
+    
+    }
+    
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  
+  border: none;
+  background: #f1f1f1;
+  color:rgba(10,80,152);
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: rgba(255,255,255,0.8);
+  outline: none;
+}
+
+.registerbtn {
+  background-color: white;
+  color: rgba(20,130,188);
+  padding: 6px 20px;
+  margin: 8px 0;
+  font-size:20px;
+  font-weight: 900;
+  border: 1px solid rgba(244,255,255,0);
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+ .registerbtn:hover{
+  
+    box-shadow: 0px 0px 10px  rgba(1,100,148);
+    background-color: rgba(255,255,255,0.82); 
+    }
+        
+        
+    span{
+        height: 30px;
+        width: 100%;
+        text-decoration: underline;
+        display:block;
+        margin:-20px 0 10px 0;
+    } 
+.content .menu{
+        width: 100%;
+        
+        display:grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-gap: 5px;
+        padding:5px;
+        
+    }
+    .menu .formular{
+         
+        height: 100%;
+        background-color:rgba(255,255,255,0.3);
+        cursor: pointer;
+
+        
+    }
+    .menu .formular:hover{
+       background-color:rgba(255,255,255,0.7);
+       box-shadow: 0px 0px 10px  rgba(1,100,148);
+        
+    }
+    .formular h4{
+        text-align: center;
+        margin:20px;
+        color:rgba(2,70,142);
+        font-size:20px;
+      
+    }
+    .content h1{
+        margin:20px 0px 20px 0px;
+        text-align: center;
+        color:white;
+    }
+    
+    .formular img{
+        width: 80%;
+        mix-blend-mode: multiply;
+        z-index: -3;
+     
+        display: block;
+        margin:10px auto;
+        
+    }
+    .formular:last-child img{
+      width: 73%;
+        
+    }
+    .formular:first-child img{
+        width:85%;
+        
+    }
+@media screen and (max-width:1080px){
+    .content{
+        color:yellow;
+        width: 80%;
+    }
+    @media screen and (max-width:720px){
+    .content{
+        color:yellow;
+        width: 92%;
+    }
+}

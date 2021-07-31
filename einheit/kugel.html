@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+<style>
+    .container{
+        display:grid;
+        grid-template-columns: 2fr 1fr;
+        grid-gap: 10px;
+        padding:10px;
+    }
+    .left,.right{
+       
+    }
+    table{
+        width: 100%;
+    }
+    tr{ 
+        
+        width: 100%;
+        color:white;
+        font-size: 19px;
+        display:flex;
+        justify-content:center;
+        align-items: baseline;
+    }
+    tr td:first-child{
+        flex:4;
+        padding:0px 2px 10px 2px;
+        text-align: right;
+       
+    }
+    tr td:nth-child(2){
+        flex:3;
+        
+    }
+    tr td:nth-child(3){
+        padding:2px 0px 10px 5px;
+        flex:1;
+    }
+    tr input[type=text]{
+        width: 100%;
+        margin:0px;
+        padding: 10px;
+        margin:12px 3px;
+    
+    }
+    .right{
+        background-color: rgba(255,255,255,0.6);
+        padding:20px;
+    }
+    .right img{
+        width: 80%;
+        display:block;
+        margin: auto;
+    }
+    </style>
+</head>
+
+<body>
+<div class="main">
+
+   <div class="figure kreis"></div>
+   <div class="figure quadrat"></div>
+
+   <div class="content">
+   <h1>Kugel</h1>
+   <div class="container">
+       <div class="left">
+       <table>
+     <tr>
+      <td >Dmr. d(2*r):</td>
+      <td ><input type="text" name="durch" id="durch"></td>
+      <td>mm</td>
+    </tr>
+    <tr>
+      <td >Volumen V:</td>
+      <td >
+      <input type="text" name="vol" id="vol"></td>
+      <td>mm<sup>3</sup></td>
+    </tr>
+    <tr>
+      <td>Oberfl&auml;che A<sub>0:</sub></td>
+      <td >
+      <input type="text" name="ober" id="ober"></td>
+      <td>mm<sup>2</sup></td>
+    </tr>
+   </table>
+      </div>
+       <div class="right">
+      <img src="bilder/kugel.png" alt="kugel">
+
+       </div>
+   </div>
+ <button onclick="location.href ='links.html'"  class="registerbtn" >Links</button>
+    </div>
+    
+</div>
+ <script>
+   const volumen = document.getElementById("vol");
+   const ober = document.getElementById("ober");
+   const durch = document.getElementById("durch");    
+   durch.oninput = () =>{
+    if(isNaN(durch.value)) 
+      {
+           
+      ober.value = "NaN";
+      volumen.value="NaN";}
+       else{
+    ober.value = (Math.PI *  Math.pow(parseInt(durch.value),2)).toFixed(3);
+            
+            volumen.value = ((1/6) * Math.PI * Math.pow(parseInt(durch.value),3)).toFixed(3);      
+   } }
+    
+    </script> 
+</body>
+</html>
